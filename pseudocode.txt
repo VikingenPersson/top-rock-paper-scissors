@@ -43,7 +43,21 @@ FUNCTION playGame
         CALL getUserChoice and set userChoice to its return value
         CALL playRound with userChoice and computerChoice as arguments
         SET winner to the return value of playRound
-        PRINT the result of the round
-        INCREMENT the score variables
+        IF winner is set to "draw" THEN
+            PRINT draw round message
+        ELSEIF winner is set to "user" THEN
+            PRINT user win round message
+            INCREMENT userScore by 1
+        ELSE
+            PRINT computer won round message
+            INCREMENT computerScore by 1
+        ENDIF
     ENDWHILE
+    IF userScore and computerScore is equal THEN
+        PRINT draw game message
+    ELSEIF userScore is higher than computerScore THEN
+        PRINT user game win message
+    ELSE
+        PRINT computer game win message
+    ENDIF
 ENDFUNCTION
