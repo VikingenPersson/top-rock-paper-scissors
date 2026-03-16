@@ -10,3 +10,12 @@ FUNCTION getComputerChoice
         SET choiceStr to "scissors"
     ENDIF
     RETURN choiceStr
+ENDFUNCTION
+
+FUNCTION getHumanChoice
+    INIT variable called choiceStr of type string with starting value ""
+    OBTAIN user choice between "rock" "paper" and "scissors"
+    SET choiceStr to users choice
+    SET choiceStr to lower case
+    RETURN choiceStr
+ENDFUNCTION
