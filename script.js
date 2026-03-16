@@ -28,3 +28,25 @@ function getUserChoice(){
 
     return choiceStr
 }
+
+function playRound(userChoice, computerChoice){
+
+    let winner = "";
+
+
+    //SET winner to "user" "draw" or "computer" based on who wins
+    if (userChoice === computerChoice){
+        winner = "draw";
+    } else if (
+        userChoice === "rock" && computerChoice === "scissors" ||
+        userChoice === "paper" && computerChoice === "rock" ||
+        userChoice === "scissors" && computerChoice === "paper"
+    ){
+        winner = "user";
+    } else{
+        winner = "computer";
+    }
+
+    return winner
+
+}
