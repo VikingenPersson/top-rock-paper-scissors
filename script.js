@@ -1,9 +1,9 @@
+//Generates a random choice for the computer and returns it
 function getComputerChoice(){
 
     let choiceInt = 0;
     let choiceStr = "";
 
-    // SET choiceInt to a random number between 1 and 3
     choiceInt = Math.floor(Math.random()*3)+1;
 
     if (choiceInt <= 1){
@@ -17,24 +17,21 @@ function getComputerChoice(){
     return choiceStr;
 }
 
+//Prompts user and returns their choice
 function getUserChoice(){
     let choiceStr = "";
 
-    // OBTAIN user choice between "rock" "paper" and "scissors"
-    // SET choiceStr to users choice
-    // SET choiceStr to lower case
     choiceStr = prompt("Choose between 'rock' 'paper' and 'scissors':", "rock");
     choiceStr = choiceStr.toLowerCase();
 
     return choiceStr
 }
 
+//Checks who won and returns the winner
 function playRound(userChoice, computerChoice){
 
     let winner = "";
 
-
-    //SET winner to "user" "draw" or "computer" based on who wins
     if (userChoice === computerChoice){
         winner = "draw";
     } else if (
@@ -66,8 +63,7 @@ function playGame(){
 
         let winner = playRound(userChoice, computerChoice);
 
-        //INCREMENT winners score by 1
-        //PRINT win message
+        //Checks who won the round, increases score and prints message
         if (winner === "draw"){
             console.log(`Looks like this round was a draw, you both chose ${userChoice}`);
         } else if (winner === "user"){
@@ -80,7 +76,7 @@ function playGame(){
     }
 
 
-    //PRINT win message
+    //Checks who won the game and prints appropiate message
     if (userScore === computerScore){
         console.log(`This game was a draw, you both got ${userScore} points`);
     } else if (userScore > computerScore){
