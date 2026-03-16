@@ -31,3 +31,18 @@ FUNCTION playRound with parameters userChoice and computerChoice
     ENDIF
     RETURN winner
 ENDFUNCTION
+
+FUNCTION playGame
+    INIT two variables userScore and computerScore of type int and starting value of 0
+    INIT variable called round of type int and starting value of 0
+    WHILE round is less than 5
+        INCREMENT round by 1
+        INIT two variables userChoice and computerChoice of type str with starting values of ""
+        INIT variable called winner of type string and starting value ""
+        CALL getComputerChoice and set computerChoice to its return value
+        CALL getUserChoice and set userChoice to its return value
+        CALL playRound with userChoice and computerChoice as arguments
+        SET winner to the return value of playRound
+        PRINT the result of the round
+        INCREMENT the score variables
+    ENDWHILE
