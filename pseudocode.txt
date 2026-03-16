@@ -1,0 +1,12 @@
+FUNCTION getComputerChoice
+    INIT variable named choiceInt of type int with starting value 0
+    INIT variable named choiceStr of type string and starting value ""
+    SET choiceInt to a random number between 1 and 3
+    IF choiceInt is less than or equal to 1 THEN
+        SET choiceStr to "rock"
+    ELSEIF choiceInt is less than or equal to 2 THEN
+        SET choiceStr to "paper"
+    ELSE
+        SET choiceStr to "scissors"
+    ENDIF
+    RETURN choiceStr
