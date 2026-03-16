@@ -50,3 +50,42 @@ function playRound(userChoice, computerChoice){
     return winner
 
 }
+
+function playGame(){
+
+    let userScore = 0;
+    let computerScore = 0;
+    let round = 0;
+
+    while (round < 5){
+        
+        round++;
+
+        let computerChoice = getComputerChoice();
+        let userChoice = getUserChoice();
+
+        let winner = playRound(userChoice, computerChoice);
+
+        //INCREMENT winners score by 1
+        //PRINT win message
+        if (winner === "draw"){
+            console.log(`Looks like this round was a draw, you both chose ${userChoice}`);
+        } else if (winner === "user"){
+            console.log(`You won this round! ${userChoice} beats ${computerChoice}`);
+            userScore++;
+        } else{
+            console.log(`You lost this round, computers ${computerChoice} beats your ${userChoice}`);
+            computerScore++;
+        }
+    }
+
+
+    //PRINT win message
+    if (userScore === computerScore){
+        console.log(`This game was a draw, you both got ${userScore} points`);
+    } else if (userScore > computerScore){
+        console.log(`You won the game with ${userScore} points against the computers ${computerScore}`);
+    } else {
+        console.log(`You lost the game, computer got ${computerScore} points against your ${userScore} points`);
+    }
+}
