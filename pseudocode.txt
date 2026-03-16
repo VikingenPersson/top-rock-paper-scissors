@@ -46,3 +46,4 @@ FUNCTION playGame
         PRINT the result of the round
         INCREMENT the score variables
     ENDWHILE
+ENDFUNCTION
