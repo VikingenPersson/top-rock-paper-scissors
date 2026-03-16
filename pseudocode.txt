@@ -12,10 +12,22 @@ FUNCTION getComputerChoice
     RETURN choiceStr
 ENDFUNCTION
 
-FUNCTION getHumanChoice
+FUNCTION getUserChoice
     INIT variable called choiceStr of type string with starting value ""
     OBTAIN user choice between "rock" "paper" and "scissors"
     SET choiceStr to users choice
     SET choiceStr to lower case
     RETURN choiceStr
+ENDFUNCTION
+
+FUNCTION playRound with parameters userChoice and computerChoice
+    INIT variable winner of type string with starting value ""
+    IF userChoice and computerChoice is the same THEN
+        SET winner to "draw"
+    ELSEIF userChoice beats computerChoice THEN
+        SET winner to "user"
+    ELSE
+        SET winner to "computer"
+    ENDIF
+    RETURN winner
 ENDFUNCTION
