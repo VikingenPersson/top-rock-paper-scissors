@@ -14,5 +14,17 @@ function getComputerChoice(){
         choiceStr = "scissors";
     }
 
+    return choiceStr;
+}
+
+function getUserChoice(){
+    let choiceStr = "";
+
+    // OBTAIN user choice between "rock" "paper" and "scissors"
+    // SET choiceStr to users choice
+    // SET choiceStr to lower case
+    choiceStr = prompt("Choose between 'rock' 'paper' and 'scissors':", "rock");
+    choiceStr = choiceStr.toLowerCase();
+
     return choiceStr
 }
