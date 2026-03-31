@@ -17,16 +17,6 @@ function getComputerChoice(){
     return choiceStr;
 }
 
-//Prompts user and returns their choice
-function getUserChoice(){
-    let choiceStr = "";
-
-    choiceStr = prompt("Choose between 'rock' 'paper' and 'scissors':", "rock");
-    choiceStr = choiceStr.toLowerCase();
-
-    return choiceStr
-}
-
 //Checks who won and returns the winner
 function playRound(userChoice, computerChoice){
 
@@ -48,40 +38,48 @@ function playRound(userChoice, computerChoice){
 
 }
 
-function playGame(){
-
-    let userScore = 0;
-    let computerScore = 0;
-    let round = 0;
-
-    while (round < 5){
-        
-        round++;
-
-        let computerChoice = getComputerChoice();
-        let userChoice = getUserChoice();
-
-        let winner = playRound(userChoice, computerChoice);
-
-        //Checks who won the round, increases score and prints message
-        if (winner === "draw"){
-            console.log(`Looks like this round was a draw, you both chose ${userChoice}`);
-        } else if (winner === "user"){
-            console.log(`You won this round! ${userChoice} beats ${computerChoice}`);
+function clickChoiceButton(event){
+    const winner = playRound(event.target.innerText.toLowerCase(), getComputerChoice());
+    switch (winner){
+        case "user":
             userScore++;
-        } else{
-            console.log(`You lost this round, computers ${computerChoice} beats your ${userChoice}`);
+            announcementLabel.textContent = "You won this round";
+            break;
+
+        case "computer":
             computerScore++;
-        }
+            announcementLabel.textContent = "Computer won this round";
+            break;
+
+        default:
+            announcementLabel.textContent = "This round was a draw";
     }
 
-
-    //Checks who won the game and prints appropiate message
-    if (userScore === computerScore){
-        console.log(`This game was a draw, you both got ${userScore} points`);
-    } else if (userScore > computerScore){
-        console.log(`You won the game with ${userScore} points against the computers ${computerScore}`);
-    } else {
-        console.log(`You lost the game, computer got ${computerScore} points against your ${userScore} points`);
+    if (userScore >= 5){
+        userScore = 0;
+        computerScore = 0;
+        announcementLabel.textContent = "Congratulations, you won the game!"
+    } else if (computerScore >= 5){
+        userScore = 0;
+        computerScore = 0;
+        announcementLabel.textContent = "Unfortunatly the computer won this game."
     }
+
+    userScoreLabel.textContent = userScore;
+    computerScoreLabel.textContent = computerScore;
 }
+
+let userScore = 0;
+let computerScore = 0;
+
+const userScoreLabel = document.querySelector("#userScore");
+const computerScoreLabel = document.querySelector("#computerScore");
+const announcementLabel = document.querySelector("#announcement");
+
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", clickChoiceButton);
+paperButton.addEventListener("click", clickChoiceButton);
+scissorsButton.addEventListener("click", clickChoiceButton);
